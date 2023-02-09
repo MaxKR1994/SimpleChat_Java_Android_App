@@ -1,5 +1,12 @@
 package com.example.simplechat;
 
+/**
+ This is a model class that represents a user in the system.
+ It has private fields for user ID, user name, email, and password.
+ It also provides getters and setters for each of these fields.
+ This class is used to store and manage information about a user in a Java application."
+ */
+
 public class UserModel {
     private String userId;
     private String userName;
