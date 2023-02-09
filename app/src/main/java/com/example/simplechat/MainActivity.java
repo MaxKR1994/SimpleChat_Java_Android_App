@@ -42,16 +42,27 @@ public class MainActivity extends AppCompatActivity {
 
         databaseReference.addValueEventListener(new ValueEventListener() {
 
-//            This method is called when the data in the Firebase database changes.
-//            It clears the user adapter, loops through the children of the DataSnapshot object,
-//            and adds each child to the adapter, as long as it is not the current user.
+//            This is a method that retrieves user data from a Firebase database using
+//            a DataSnapshot object. It listens for changes in the data and updates
+//            the list of users accordingly.
+//            The method starts by clearing the current list of users in the userAdapter.
+//            Then, it iterates through the children of the DataSnapshot object,
+//            which represent the individual users in the database.
+//            For each child, it gets the key, which is the user's unique identifier (uid),
+//            and checks if it's equal to the uid of the current user, which is obtained
+//            from the Firebase authentication instance. If it is, the user is skipped.
+//            Otherwise, the method gets the user data from the DataSnapshot object, which
+//            is expected to be in the form of a UserModel class, and adds it to the list
+//            of users in the userAdapter.
+//            In summary, this method provides a way to retrieve and update the list of users
+//            from a Firebase database, while ignoring the current user's data.
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 userAdapter.clear();
                 for(DataSnapshot dataSnapshot:snapshot.getChildren()){
                     String uid = dataSnapshot.getKey();
                     if(!uid.equals(FirebaseAuth.getInstance().getUid())){
-                        UserModel userModel = dataSnapshot.child(uid).getValue(UserModel.class);
+                        UserModel userModel = dataSnapshot.getValue(UserModel.class);
                         userAdapter.add(userModel);
                     }
                 }
