@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+    <!-- This line defines an XML namespace for the 'app' prefix,
+    which is used to reference various attributes
+    provided by the Android support library.
+    The namespace URI is a reference to the schema file
+    that contains the definitions for these attributes. -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
